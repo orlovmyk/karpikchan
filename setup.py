@@ -1,0 +1,5 @@
+token = input("Enter your token:")
+f = open('bot_token.py','w')
+f.write("token = '" + token +"'")
+f.close()
+print('Success!')
