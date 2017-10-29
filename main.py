@@ -1,4 +1,5 @@
 from flask import Flask, request
+import os
 from handler import message_handler, callback_query_handler
 import engine
 
@@ -46,9 +47,10 @@ def main():
     return 'ok'
 
 
-@app.route('/test',methods=['POST'])
+@app.route('/test')
 def test():
     return 'working'
 
 if __name__ == '__main__':
-    app.run(port=443)
+    port = int(os.environ.get('PORT', 443))
+    app.run(host='0.0.0.0', port=port)
