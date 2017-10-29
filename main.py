@@ -2,6 +2,7 @@ from flask import Flask, request
 from bot_token import token
 from handler import message_handler, callback_query_handler
 
+
 app = Flask(__name__)
 
 @app.route('/'+token,methods=['POST'])

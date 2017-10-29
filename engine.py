@@ -117,3 +117,11 @@ def getStickerSet(name):
 def sendSticker(chat_id, sticker_id):
     url = URL + 'sendSticker?chat_id={}&sticker={}'.format(chat_id,sticker_id)
     requests.get(url)
+
+# WEBHOOK
+
+def setWebhook():
+    url = URL + 'setWebhook?url=https://karpikchan.herokuapp.com/{}'.format(token)
+    res = requests.get(url)
+
+setWebhook()
