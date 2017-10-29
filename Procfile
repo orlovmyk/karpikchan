@@ -1,3 +1,2 @@
-<launch>: <python main.py>
-<web>: <python main.py>
-worker: python main.py
+web: main.py
+worker: main.py
