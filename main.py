@@ -1,4 +1,5 @@
 from flask import Flask, request
+import os
 from handler import message_handler, callback_query_handler
 
 app = Flask(__name__)
@@ -48,4 +49,5 @@ def test():
     return 'working'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=443)
+    port = int(os.environ.get('PORT', 443))
+    app.run(host='0.0.0.0', port=port)
