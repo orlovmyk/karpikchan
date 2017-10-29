@@ -6,7 +6,7 @@ engine.setWebhook()
 
 app = Flask(__name__)
 
-@app.route('/karpikchan.herokuapp.com/',methods=['POST'])
+@app.route('/',methods=['POST'])
 def main():
     """
     
@@ -46,7 +46,9 @@ def main():
     return 'ok'
 
 
-
+@app.route('/test',methods=['POST'])
+def test():
+    return 'working'
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0',port=443)
+    app.run(port=443)
