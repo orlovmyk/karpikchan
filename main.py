@@ -1,7 +1,9 @@
 from flask import Flask, request
 from bot_token import token
 from handler import message_handler, callback_query_handler
+import engine
 
+engine.setWebhook()
 
 app = Flask(__name__)
 
@@ -48,4 +50,4 @@ def main():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0',port=443)
