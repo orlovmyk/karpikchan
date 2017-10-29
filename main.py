@@ -1,9 +1,6 @@
 from flask import Flask, request
 import os
 from handler import message_handler, callback_query_handler
-import engine
-
-engine.setWebhook()
 
 app = Flask(__name__)
 
