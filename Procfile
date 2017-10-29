@@ -1,2 +1,3 @@
-web: python3 main.py
+<launch>: <python main.py>
+<web>: <python main.py>
 worker: python main.py
