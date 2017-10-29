@@ -1,5 +1,4 @@
 from flask import Flask, request
-from bot_token import token
 from handler import message_handler, callback_query_handler
 import engine
 
@@ -7,7 +6,7 @@ engine.setWebhook()
 
 app = Flask(__name__)
 
-@app.route('/'+token,methods=['POST'])
+@app.route('/karpikchan.herokuapp.com/',methods=['POST'])
 def main():
     """
     

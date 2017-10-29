@@ -121,5 +121,5 @@ def sendSticker(chat_id, sticker_id):
 # WEBHOOK
 
 def setWebhook():
-    url = URL + 'setWebhook?url=https://karpikchan.herokuapp.com/{}:443'.format(token)
+    url = URL + 'setWebhook?url=https://karpikchan.herokuapp.com/'.format(token)
     requests.get(url)
