@@ -20,6 +20,41 @@ schedule_markup = {"inline_keyboard":
                         {"text": "Пт", "callback_data": "4"}]]
             , "resize_keyboard": True}
 
+people_list = {
+    'people1': """
+1.Андрющенко Михайло Андрiйович
+2.Бей Руслан Александрович
+3.Вуciк Олег Юрiйович
+4.Гордiенко Маргарита Романiвна
+5.Дружинiна Марiя Олександрiвна
+6.Зюбiн Iван Олексiйович
+7.Iванов Артем Владиславович
+8.Кондратьев Антон Андрiйович
+9.Курашов Евгенiй Олександрович
+10.Лещенко Андрюха Сергiйович
+11.Максименков Олексiй Юрiйович
+12.Мельтюхов Богдан Максимович
+""",
+    'people2': """
+13.Орлов Микита Миколайович
+14.Пелюшок Богдан Володимирович
+15.Погоренко Наталiя Сергiiвна
+16.Полторацька Анна Геннадiiвна
+17.Рижков Кирило Павлович
+18.Роздайвайфай Олег Юрiйович
+19.Скрит Iрина Петрiвна
+20.Хмелевський Евгенiй Володимирович
+21.Хмельницький Даниiл Олександрович
+22.Хоменко Iлля Сергiйович
+23.Чайкiн Вiктор Владиславович
+"""
+}
+
+people_list_markup = {"inline_keyboard":
+                      [[{"text": "<<", "callback_data": "people1"},
+                        {"text": ">>", "callback_data": "people2"}]]
+            , "resize_keyboard": True}
+
 def message_handler(query):
     """
     {'last_name': '🍀', 'chat_id': 239062390, 'first_name': 'orlow', 'username': 'orlow', 'text': '3'}
@@ -35,10 +70,14 @@ def message_handler(query):
     text = query["text"]
     chat_id = query["chat_id"]
 
+    if '@' in text:
+        res = text.find('@')
+        text = text[:res]
+
     if text == "/start":
         e.sendMessage(chat_id,"._.")
 
-    elif text[:2] == "/s":
+    elif text == "/s":
         weekday = datetime.datetime.now().weekday()
         try:
             weekday = int(text[2:])
@@ -46,6 +85,9 @@ def message_handler(query):
             pass
         markup = schedule_markup
         e.sendMessage(chat_id,schedule[weekday],reply_markup=markup)
+
+    elif text == "/l":
+        e.sendMessage(chat_id,people_list['people1'],reply_markup=people_list_markup)
 
 
     elif text == "/danil":
@@ -58,7 +100,9 @@ def message_handler(query):
         e.sendMessage(chat_id,"И немного <i>секса</i>")
 
     elif text == "/andruxa":
-        e.sendMessage(chat_id, 'текст просто')
+        e.sendMessage(chat_id, 'ЕБАТЬ АНДРЮХА!')
+        e.sendMessage(chat_id, 'МУЖИК!')
+        e.sendMessage(chat_id, '😎😎😎')
 
     elif text == "/orlow":
         e.sendMessage(chat_id, 't.me/orlow')
@@ -107,6 +151,10 @@ def callback_query_handler(query):
 
     if data == '999':
         e.answerCallbackQuery(callback_query_id,'Забирай, мне не жалко :3')
+
+    elif data[:6] == 'people':
+        e.editMessageText(chat_id, message_id, people_list[data], reply_markup=people_list_markup)
+        e.answerCallbackQuery(callback_query_id, 'Меняю список 🤗')
 
     else:
         data = int(data)
