@@ -9,6 +9,21 @@ schedule_markup = constants.schedule_markup
 people_list = constants.people_list
 people_list_markup = constants.people_list_markup
 
+"""
+        text = res['text']
+        if not text:
+            text = '<code>пост без сообщения</code>'
+
+        attachments = res["attachments"]
+        markup = []
+        if attachments:
+            for i in attachments:
+                current_item = next(iter(i.items()))
+                markup.append([{"text": current_item[0]}, {"callback_data": 'url'+current_item[1]}])
+
+        e.sendMessage(chat_id, text,reply_markup= {"inline_keyboard": markup ,"resize_keyboard": True})
+"""
+
 def message_handler(query):
     """
     {'last_name': '🍀', 'chat_id': 239062390, 'first_name': 'orlow', 'username': 'orlow', 'text': '3'}
@@ -62,19 +77,7 @@ def message_handler(query):
             return
 
         res = vk_api.make_request(url)
-
-        text = res['text']
-        if not text:
-            text = '<code>пост без сообщения</code>'
-
-        attachments = res["attachments"]
-        markup = []
-        if attachments:
-            for i in attachments:
-                current_item = next(iter(i.items()))
-                markup.append([{"text": current_item[0]}, {"callback_data": 'url'+current_item[1]}])
-
-        e.sendMessage(chat_id, text,reply_markup= {"inline_keyboard": markup ,"resize_keyboard": True})
+        e.sendMessage(chat_id, str(res))
 
     elif text == "/quit":
         e.sendMessage(chat_id, "Вы все здесь пидорасы!!!")
