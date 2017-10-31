@@ -19,7 +19,7 @@ def sendMessage(chat_id, text, disable_notification=False, reply_markup=''):
     '{"text":"Вертикально", "callback_data":"vertically"}]],"resize_keyboard":true}'
     :return:
     """
-    if reply_markup != '':
+    if reply_markup:
         reply_markup = '&reply_markup=' + dumps(reply_markup)
 
     if disable_notification:

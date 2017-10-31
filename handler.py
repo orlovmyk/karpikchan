@@ -77,7 +77,17 @@ def message_handler(query):
             return
 
         res = vk_api.make_request(url)
-        e.sendMessage(chat_id, str(res))
+        attachments = res['attachments']
+        message = res["text"]
+
+        markup = []
+        for i in attachments.items():
+            markup.append([{"text": i[0]}, {"callback_data": 'url' + i[1]}])
+
+        if not message: message = '<code>text is missing </code>'
+        if markup: markup = {"inline_keyboard":markup ,"resize_keyboard":True}
+
+        e.sendMessage(chat_id, message, reply_markup=markup)
 
     elif text == "/quit":
         e.sendMessage(chat_id, "Вы все здесь пидорасы!!!")

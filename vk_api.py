@@ -7,11 +7,14 @@ TOKEN_VK = os.environ.get('TOKEN_VK')
 def parse(data):
     data = data["response"][1]
     text = data["text"]
-    attachments = []
+    attachments = {}
 
-    for i in data["attachments"]:
-        type = i["type"]
-        attachments.append({type: i[type]['src']})
+    if "attachments" in data.keys():
+        cnt = 0
+        for i in data["attachments"]:
+            cnt += 1
+            type = i["type"]
+            attachments.update({type + str(cnt): i[type]['src_big']})
 
     return {
         "text": text,
@@ -25,16 +28,16 @@ def make_request(domain, offset=1):
     try:
         res = requests.get(URL)
     except requests.exceptions.ConnectionError:
-        return 'ConnectionError'
+        return None
 
     res = res.json()
     if 'error' in res.keys():
-        return 'errorAPI'
+        return None
 
     try:
         res = parse(res)
     except Exception:
-        return 'errorParse'
+        return None
 
     return res
 
