@@ -71,7 +71,7 @@ def message_handler(query):
         markup = []
         if attachments:
             for i in attachments:
-                current_item = i.items()
+                current_item = next(iter(i.items()))
                 markup.append([{"text": current_item[0]}, {"callback_data": 'url'+current_item[1]}])
 
         e.sendMessage(chat_id, text,reply_markup= {"inline_keyboard": markup ,"resize_keyboard": True})
