@@ -56,17 +56,12 @@ def message_handler(query):
         res = datetime.time.microsecond
 
     elif text[:3] == '/vk':
-
-
         url = text[4:]
         if not url:
+            e.sendMessage(chat_id, 'Не могу разбить строку')
             return
 
         res = vk_api.make_request(url)
-
-        if res[:5] == 'error':
-            e.sendMessage(chat_id,res)
-            return
 
         text = res['text']
         if not text:
@@ -77,7 +72,7 @@ def message_handler(query):
         if attachments:
             for i in attachments:
                 current_item = i.items()
-                markup.append([{"text":current_item[0]}, {"callback_data": 'url'+current_item[1]}])
+                markup.append([{"text": current_item[0]}, {"callback_data": 'url'+current_item[1]}])
 
         e.sendMessage(chat_id, text,reply_markup= {"inline_keyboard": markup ,"resize_keyboard": True})
 

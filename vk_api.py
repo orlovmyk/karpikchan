@@ -25,16 +25,16 @@ def make_request(domain, offset=1):
     try:
         res = requests.get(URL)
     except requests.exceptions.ConnectionError:
-        return {'error': 'Connection'}
+        return None
 
     res = res.json()
     if 'error' in res.keys():
-        return {'error': 'API'}
+        return None
 
     try:
         res = parse(res)
     except Exception:
-        return {'error': 'Parse'}
+        return None
 
     return res
 
