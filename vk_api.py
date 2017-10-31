@@ -14,6 +14,9 @@ def parse(data):
         for i in data["attachments"]:
             cnt += 1
             type = i["type"]
+            if type != 'photo':
+                continue
+
             attachments.update({type + str(cnt): i[type]['src_big']})
 
     return {
