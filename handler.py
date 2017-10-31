@@ -1,3 +1,4 @@
+import vk_api
 import engine as e
 import constants
 import datetime
@@ -54,8 +55,12 @@ def message_handler(query):
     elif text == "/time":
         res = datetime.time.microsecond
 
+    elif text == '/vk':
+        res = vk_api.make_request('4ch')
+        e.sendMessage(chat_id, str(res))
+
     elif text == "/quit":
-        e.sendMessage(chat_id,"Вы все здесь пидорасы!!!")
+        e.sendMessage(chat_id, "Вы все здесь пидорасы!!!")
         e.leaveChat(chat_id)
 
     elif text == "/linux":
