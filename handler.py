@@ -82,12 +82,12 @@ def message_handler(query):
 
         markup = []
         for i in attachments.items():
-            markup.append([{"text": i[0]}, {"callback_data": 'url' + i[1]}])
+            markup.append({"text": i[0], "callback_data": 'url' + i[1]})
 
         if not message: message = '<code>text is missing </code>'
-        if markup: markup = {"inline_keyboard":markup ,"resize_keyboard":True}
+        if markup: markup = {"inline_keyboard": [markup] ,"resize_keyboard":True}
 
-        e.sendMessage(chat_id, message, reply_markup=markup)
+        e.sendMessage(chat_id, message, reply_markup=markup, disable_HTML=True)
 
     elif text == "/quit":
         e.sendMessage(chat_id, "Вы все здесь пидорасы!!!")

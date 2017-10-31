@@ -13,7 +13,7 @@ URL = 'https://api.telegram.org/bot' + TOKEN + '/'
 
 
 #TEXT
-def sendMessage(chat_id, text, disable_notification=False, reply_markup=''):
+def sendMessage(chat_id, text, disable_notification=False, reply_markup='', disable_HTML=False):
     """
     '{"inline_keyboard":[[{"text":"Горизонтально", "callback_data":"horizontally"},' 
     '{"text":"Вертикально", "callback_data":"vertically"}]],"resize_keyboard":true}'
@@ -27,8 +27,13 @@ def sendMessage(chat_id, text, disable_notification=False, reply_markup=''):
     else:
         disable_notification = ''
 
-    url = URL + 'sendMessage?chat_id={}&text={}&parse_mode=HTML{}{}'\
-        .format(chat_id,text,reply_markup,disable_notification)
+    if not disable_HTML:
+        parse_mode='&parse_mode=HTML'
+    else:
+        parse_mode=''
+
+    url = URL + 'sendMessage?chat_id={}&text={}{}{}{}'\
+        .format(chat_id,text,parse_mode,reply_markup,disable_notification)
     res = requests.get(url)
     print(res.content)
     if res.ok:
