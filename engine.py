@@ -40,6 +40,7 @@ def sendMessage(chat_id, text, disable_notification=False, reply_markup='', disa
         message_id = res.json()['result']['message_id']
         return message_id
     else:
+        sendMessage(chat_id,str(res.content))
         return False
 
 
