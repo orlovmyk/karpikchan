@@ -84,8 +84,8 @@ def message_handler(query):
         for i in attachments.items():
             markup.append({"text": i[0], "callback_data": 'url' + i[1]})
 
-        if not message: message = '<code>text is missing </code>'
-        if markup: markup = {"inline_keyboard": [markup] ,"resize_keyboard":True}
+        if not message: message = 'text is missing'
+        if markup: markup = {"inline_keyboard": [markup], "resize_keyboard":True}
 
         e.sendMessage(chat_id, message, reply_markup=markup, disable_HTML=True)
 
@@ -129,6 +129,7 @@ def callback_query_handler(query):
 
     elif data[:3] == 'url':
         e.sendMessage(chat_id, data[3:])
+        e.answerCallbackQuery(callback_query_id,'Харе в вк лазить, сепарат!')
 
     else:
         data = int(data)
