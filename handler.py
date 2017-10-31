@@ -40,7 +40,6 @@ def message_handler(query):
         e.sendMessage(chat_id, 'МУЖИК!')
         e.sendMessage(chat_id, '😎😎😎')
 
-
     elif text == "/cookie":
         markup = {"inline_keyboard":
                       [[{"text": "Получить печенье 🍪", "callback_data": "999"}]]
@@ -52,6 +51,9 @@ def message_handler(query):
         sticker_list = [i["file_id"] for i in res]
         e.sendSticker(chat_id, choice(sticker_list))
 
+    elif text == "/time":
+        res = datetime.time.microsecond
+
     elif text == "/linux":
         e.sendMessage(chat_id, """
 {0}: Полюбила я пингвина,
@@ -61,7 +63,7 @@ def message_handler(query):
 {1}: Тоже с линупсом трахаесси?
         """.format("<b>404_user_not_found</b>","<b>xYZ</b>"))
 
-    elif text in constants.text_answers:
+    elif text in constants.text_answers.keys():
         e.sendMessage(chat_id,constants.text_answers[text])
 
     else:

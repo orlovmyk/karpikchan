@@ -1,9 +1,20 @@
-import bot_token
+import os
 import requests
 from json import dumps
 
-token = bot_token.token
-URL  = 'https://api.telegram.org/bot' + token +'/'
+# WEBHOOK
+
+def setWebhook(app_url):
+    url = URL + 'setWebhook?url='+app_url
+    requests.get(url)
+
+APP_URL = os.environ('APP_URL')
+TOKEN = os.environ('TOKEN')
+URL = 'https://api.telegram.org/bot' + TOKEN + '/'
+
+setWebhook(APP_URL)
+
+#TEXT
 
 def sendMessage(chat_id, text, disable_notification = False,reply_markup = ''):
     """
@@ -118,8 +129,3 @@ def sendSticker(chat_id, sticker_id):
     url = URL + 'sendSticker?chat_id={}&sticker={}'.format(chat_id,sticker_id)
     requests.get(url)
 
-# WEBHOOK
-
-def setWebhook():
-    url = URL + 'setWebhook?url=https://karpikchan.herokuapp.com/'.format(token)
-    requests.get(url)
