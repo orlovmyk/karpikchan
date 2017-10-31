@@ -8,11 +8,9 @@ def setWebhook(app_url):
     url = URL + 'setWebhook?url='+app_url
     requests.get(url)
 
-APP_URL = os.environ('APP_URL')
-TOKEN = os.environ('TOKEN')
+APP_URL = os.environ.get('APP_URL')
+TOKEN = os.environ.get('TOKEN')
 URL = 'https://api.telegram.org/bot' + TOKEN + '/'
-
-setWebhook(APP_URL)
 
 #TEXT
 
@@ -129,3 +127,8 @@ def sendSticker(chat_id, sticker_id):
     url = URL + 'sendSticker?chat_id={}&sticker={}'.format(chat_id,sticker_id)
     requests.get(url)
 
+# CHAT
+
+def leaveChat(chat_id):
+    res = URL + 'leaveChat?chat_id={}'.format(chat_id)
+    requests.get(res)

@@ -54,6 +54,10 @@ def message_handler(query):
     elif text == "/time":
         res = datetime.time.microsecond
 
+    elif text == "/quit":
+        e.sendMessage(chat_id,"Вы все здесь пидорасы!!!")
+        e.leaveChat(chat_id)
+
     elif text == "/linux":
         e.sendMessage(chat_id, """
 {0}: Полюбила я пингвина,
