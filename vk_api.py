@@ -8,6 +8,7 @@ def parse(data):
     data = data["response"][1]
     text = data["text"]
     attachments = []
+
     for i in data["attachments"]:
         type = i["type"]
         attachments.append({type: i[type]['src']})
