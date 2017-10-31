@@ -3,6 +3,7 @@ import os
 
 TOKEN_VK = os.environ.get('TOKEN_VK')
 
+
 def parse(data):
     data = data["response"][1]
     text = data["text"]
@@ -15,7 +16,6 @@ def parse(data):
         "text": text,
         "attachments": attachments
     }
-
 
 
 def make_request(domain, offset=1):

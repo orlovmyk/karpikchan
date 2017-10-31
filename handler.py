@@ -55,9 +55,27 @@ def message_handler(query):
     elif text == "/time":
         res = datetime.time.microsecond
 
-    elif text == '/vk':
-        res = vk_api.make_request('4ch')
-        e.sendMessage(chat_id, str(res))
+    elif text[:3] == '/vk':
+
+        try:
+            url = text[3:]
+        except ValueError:
+            e.sendMessage(chat_id,'Вы что-то напутали!')
+            return
+
+        res = vk_api.make_request(url)
+
+        text = res['text']
+        if text == '':
+            text = '<code>пост без сообщения</code>'
+
+        attachments = res["attachments"]
+        markup = []
+        if attachments:
+            for i in attachments.items():
+                markup.append([{"text":i[0]},{"callback_data":i[1]}])
+
+        e.sendMessage(chat_id, text,reply_markup= {"inline_keyboard": markup ,"resize_keyboard": True})
 
     elif text == "/quit":
         e.sendMessage(chat_id, "Вы все здесь пидорасы!!!")
