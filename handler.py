@@ -73,7 +73,7 @@ def message_handler(query):
         markup = []
         if attachments:
             for i in attachments.items():
-                markup.append([{"text":i[0]},{"callback_data":i[1]}])
+                markup.append([{"text":i[0]},{"callback_data":'url'+i[1]}])
 
         e.sendMessage(chat_id, text,reply_markup= {"inline_keyboard": markup ,"resize_keyboard": True})
 
@@ -114,6 +114,9 @@ def callback_query_handler(query):
     elif data[:6] == 'people':
         e.editMessageText(chat_id, message_id, people_list[data], reply_markup=people_list_markup)
         e.answerCallbackQuery(callback_query_id, 'Меняю список 🤗')
+
+    elif data[:3] == 'url':
+        e.sendMessage(chat_id, data[3:])
 
     else:
         data = int(data)
