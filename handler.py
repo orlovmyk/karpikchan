@@ -57,16 +57,19 @@ def message_handler(query):
 
     elif text[:3] == '/vk':
 
-        try:
-            url = text[3:]
-        except ValueError:
-            e.sendMessage(chat_id,'Вы что-то напутали!')
+
+        url = text[4:]
+        if not url:
             return
 
         res = vk_api.make_request(url)
 
+        if res[:5] == 'error':
+            e.sendMessage(chat_id,res)
+            return
+
         text = res['text']
-        if text == '':
+        if not text:
             text = '<code>пост без сообщения</code>'
 
         attachments = res["attachments"]
