@@ -91,6 +91,10 @@ def text_message(chat_id, text):
         text = text[3:]
         e.sendMessage(chat_id, e.DuckDuckGo(text))
 
+    elif text[1] == "i":
+        text = text[3:]
+        e.sendMessage(chat_id, e.WikiSearch(text))
+
     elif text == "/andruxa":
         e.sendMessage(chat_id, 'ЕБАТЬ АНДРЮХА!')
         e.sendMessage(chat_id, 'МУЖИК!')
@@ -103,8 +107,7 @@ def text_message(chat_id, text):
         e.sendMessage(chat_id, "Я приготовила печеньки!", reply_markup=markup)
 
     elif text == "/anime":
-        stickers_rand = choice(['catgirlnecoco1',
-                                 'catgirlnecoco2',
+        stickers_rand = choice([ 'catgirlnecoco2',
                                  'catgirlnecoco3',
                                  'Usagikei',
                                  'Usagikei2'])
