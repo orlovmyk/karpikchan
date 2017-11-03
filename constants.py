@@ -62,3 +62,6 @@ text_answers = {
     "/vitya":"https://www.google.com.ua/search?q=%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA",
     "/orlow": "t.me/orlow"
 }
+
+latitude = 49.9992089
+longitude = 36.2429473

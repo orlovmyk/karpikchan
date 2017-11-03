@@ -18,15 +18,25 @@ def main():
     type = next(iter(answer.keys()))
 
     try:
-        if (type == "message"):
+        if type == "message":
             #print(answer)
-            text = answer["message"]["text"]
-            chat_id = answer["message"]["chat"]["id"]
-            answer = {"chat_id": chat_id,
-                      "text":text}
-            message_handler(answer)
+            update_dict = {}
+            answer = answer['message']
 
-        elif (type == "callback_query"):
+            chat_id = answer["chat"]["id"]
+            update_dict.update({"chat_id":chat_id})
+
+            if 'text' in answer.keys():
+                text = answer["text"]
+                update_dict.update({"text":text})
+
+            """
+            if 'location' in answer.keys():
+                text = answer[]
+            """
+            message_handler(update_dict)
+
+        elif type == "callback_query":
             #print(answer)
             chat_id = answer["callback_query"]["message"]["chat"]["id"]
             data = answer["callback_query"]["data"]
