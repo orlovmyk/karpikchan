@@ -96,11 +96,11 @@ def text_message(chat_id, text):
         e.sendMessage(chat_id, "Я приготовила печеньки!", reply_markup=markup)
 
     elif text == "/anime":
-        stickers_rand = ('catgirlnecoco1',
-                         'catgirlnecoco2',
-                         'catgirlnecoco3',
-                         'Usagikei',
-                         'Usagikei2')
+        stickers_rand = choice({'catgirlnecoco1',
+                                 'catgirlnecoco2',
+                                 'catgirlnecoco3',
+                                 'Usagikei',
+                                 'Usagikei2'})
         res = e.getStickerSet(stickers_rand)
         sticker_list = [i["file_id"] for i in res]
         e.sendSticker(chat_id, choice(sticker_list))
@@ -110,7 +110,7 @@ def text_message(chat_id, text):
         sticker_list = [i["file_id"] for i in res]
         e.sendSticker(chat_id, choice(sticker_list))
 
-    elif text == "/weather":
+    elif text == "/w":
         e.sendMessage(chat_id,e.getWeather())
 
     elif text == "/map":

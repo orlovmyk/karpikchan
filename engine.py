@@ -10,7 +10,7 @@ def setWebhook(app_url):
 
 APP_URL = os.environ.get('APP_URL')
 TOKEN = os.environ.get('TOKEN')
-DARKSKY = os.environ.get('DARKSKY ')
+DARKSKY = os.environ.get('DARKSKY')
 URL = 'https://api.telegram.org/bot' + TOKEN + '/'
 
 
