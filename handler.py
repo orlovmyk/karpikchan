@@ -84,9 +84,6 @@ def text_message(chat_id, text):
     elif text == "/l":
         e.sendMessage(chat_id, people_list['people1'], reply_markup=people_list_markup)
 
-    elif text == "/map":
-        e.sendMessage(chat_id, 'Тут какрта должна быть')
-
     elif text == "/andruxa":
         e.sendMessage(chat_id, 'ЕБАТЬ АНДРЮХА!')
         e.sendMessage(chat_id, 'МУЖИК!')
@@ -105,6 +102,11 @@ def text_message(chat_id, text):
 
     elif text == "/time":
         res = datetime.time.microsecond
+
+    elif text == "/map":
+        e.sendMessage(chat_id,'Ну и как я считать без координат буду?',
+                      reply_markup={"keyboard": [[{"text": "Мое местоположение", "request_location": True}]],
+                                    "resize_keyboard": True})
 
     elif text == "/linux":
         e.sendMessage(chat_id, """
