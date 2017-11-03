@@ -65,8 +65,9 @@ def WikiSearch(search_request):
 def DuckDuckGo(search_request):
     a = requests.get('http://api.duckduckgo.com/?q={}&format=json&pretty=1'.format(search_request))
     res = a.json()
-    res = res['AbstractText']
-    res = 'Я ничего не нашла :(' if res == '' else res
+    res = res['Abstract']
+    if res == '':
+        res = 'Я ничего не нашла :('
     return res
 
 
