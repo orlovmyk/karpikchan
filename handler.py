@@ -96,17 +96,27 @@ def text_message(chat_id, text):
         e.sendMessage(chat_id, "Я приготовила печеньки!", reply_markup=markup)
 
     elif text == "/anime":
-        res = e.getStickerSet('catgirlnecoco2')
+        stickers_rand = ('catgirlnecoco1',
+                         'catgirlnecoco2',
+                         'catgirlnecoco3',
+                         'Usagikei',
+                         'Usagikei2')
+        res = e.getStickerSet(stickers_rand)
         sticker_list = [i["file_id"] for i in res]
         e.sendSticker(chat_id, choice(sticker_list))
 
-    elif text == "/time":
-        res = datetime.time.microsecond
+    elif text == "/kurashow":
+        res = e.getStickerSet('Kurashow')
+        sticker_list = [i["file_id"] for i in res]
+        e.sendSticker(chat_id, choice(sticker_list))
+
+    elif text == "/weather":
+        e.sendMessage(chat_id,e.getWeather())
 
     elif text == "/map":
         e.sendMessage(chat_id,'Ну и как я считать без координат буду?',
                       reply_markup={"keyboard": [[{"text": "Мое местоположение", "request_location": True}]],
-                                    "resize_keyboard": True})
+                                    "resize_keyboard": True, "one_time_keyboard": True})
 
     elif text == "/linux":
         e.sendMessage(chat_id, """

@@ -1,15 +1,37 @@
 import os
 import requests
 from json import dumps
+import time
 
-# WEBHOOK
+#WEBHOOK
 def setWebhook(app_url):
     url = URL + 'setWebhook?url='+app_url
     requests.get(url)
 
 APP_URL = os.environ.get('APP_URL')
 TOKEN = os.environ.get('TOKEN')
+DARKSKY = os.environ.get('DARKSKY ')
 URL = 'https://api.telegram.org/bot' + TOKEN + '/'
+
+
+#WEATHER
+def getWeather():
+    t = int(time.time())
+    r = requests.get('https://api.darksky.net/forecast/{}/49.9992,36.2429,{}?lang=ru'.format(DARKSKY,t))
+    r = r.json()
+    r = r["currently"]
+
+    type = r['precipType']
+    clouds = r["cloudCover"] * 100
+    temperature = r["apparentTemperature"]-32
+    humidity = r["humidity"] * 100
+    summary = r["summary"]
+
+    return ("Погода ⛅\n"
+          "<b>{0}</b>\n"
+          "Облачность: {1}%\n"
+          "Температура: {2} C\n"
+          "Влажность: {3} %\n".format(summary, clouds, temperature, humidity))
 
 
 #TEXT
