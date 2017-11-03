@@ -4,7 +4,8 @@ from handler import message_handler, callback_query_handler
 
 app = Flask(__name__)
 
-@app.route('/',methods=['POST'])
+
+@app.route('/', methods=['POST'])
 def main():
     """
     
@@ -24,16 +25,16 @@ def main():
             answer = answer['message']
 
             chat_id = answer["chat"]["id"]
-            update_dict.update({"chat_id":chat_id})
+            update_dict.update({"chat_id": chat_id})
 
             if 'text' in answer.keys():
                 text = answer["text"]
-                update_dict.update({"text":text})
+                update_dict.update({"text": text})
 
-            """
             if 'location' in answer.keys():
-                text = answer[]
-            """
+                location = {'location': answer['location']}
+                update_dict.update(location)
+
             message_handler(update_dict)
 
         elif type == "callback_query":
@@ -42,10 +43,10 @@ def main():
             data = answer["callback_query"]["data"]
             message_id = answer["callback_query"]["message"]["message_id"]
             callback_query_id = answer["callback_query"]["id"]
-            answer = {"chat_id":chat_id,
-                      "data":data,
-                      "message_id":message_id,
-                      "callback_query_id":callback_query_id
+            answer = {"chat_id": chat_id,
+                      "data": data,
+                      "message_id": message_id,
+                      "callback_query_id": callback_query_id
                       }
             callback_query_handler(answer)
 
