@@ -48,6 +48,8 @@ def WikiSearch(search_request):
     res = res.replace('</i>', '')
     res = res.replace('<p>', '\n')
     res = res.replace('</p>', '')
+    res = res.replace('<li>', '\n')
+    res = res.replace('</li>', '')
 
     span_first = res.find('<span')
     span_second = res.rfind('/span>')
