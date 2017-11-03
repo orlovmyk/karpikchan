@@ -84,6 +84,13 @@ def text_message(chat_id, text):
     elif text == "/l":
         e.sendMessage(chat_id, people_list['people1'], reply_markup=people_list_markup)
 
+    elif text == "/w":
+        e.sendMessage(chat_id, e.getWeather())
+
+    elif text[1] == "g":
+        text = text[3:]
+        e.sendMessage(chat_id, e.DuckDuckGo(text))
+
     elif text == "/andruxa":
         e.sendMessage(chat_id, 'ЕБАТЬ АНДРЮХА!')
         e.sendMessage(chat_id, 'МУЖИК!')
@@ -96,11 +103,11 @@ def text_message(chat_id, text):
         e.sendMessage(chat_id, "Я приготовила печеньки!", reply_markup=markup)
 
     elif text == "/anime":
-        stickers_rand = choice({'catgirlnecoco1',
+        stickers_rand = choice(['catgirlnecoco1',
                                  'catgirlnecoco2',
                                  'catgirlnecoco3',
                                  'Usagikei',
-                                 'Usagikei2'})
+                                 'Usagikei2'])
         res = e.getStickerSet(stickers_rand)
         sticker_list = [i["file_id"] for i in res]
         e.sendSticker(chat_id, choice(sticker_list))
@@ -109,9 +116,6 @@ def text_message(chat_id, text):
         res = e.getStickerSet('Kurashow')
         sticker_list = [i["file_id"] for i in res]
         e.sendSticker(chat_id, choice(sticker_list))
-
-    elif text == "/w":
-        e.sendMessage(chat_id,e.getWeather())
 
     elif text == "/map":
         e.sendMessage(chat_id,'Ну и как я считать без координат буду?',

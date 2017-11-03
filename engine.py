@@ -3,11 +3,7 @@ import requests
 from json import dumps
 import time
 
-#WEBHOOK
-def setWebhook(app_url):
-    url = URL + 'setWebhook?url='+app_url
-    requests.get(url)
-
+#ENVIRON'S
 APP_URL = os.environ.get('APP_URL')
 TOKEN = os.environ.get('TOKEN')
 DARKSKY = os.environ.get('DARKSKY')
@@ -23,7 +19,7 @@ def getWeather():
 
     type = r['precipType']
     clouds = r["cloudCover"] * 100
-    temperature = r["apparentTemperature"]-32
+    temperature = round(r["apparentTemperature"]-32, 2)
     humidity = r["humidity"] * 100
     summary = r["summary"]
 
@@ -32,6 +28,21 @@ def getWeather():
           "Облачность: {1}%\n"
           "Температура: {2} C\n"
           "Влажность: {3} %\n".format(summary, clouds, temperature, humidity))
+
+
+#DUCKDUCKGO
+def DuckDuckGo(search_request):
+    a = requests.get('http://api.duckduckgo.com/?q={}&format=json&pretty=1'.format(search_request))
+    res = a.json()
+    res = res['AbstractText']
+    res = 'Я ничего не нашла :(' if res == '' else res
+    return res
+
+
+#WEBHOOK
+def setWebhook(app_url):
+    url = URL + 'setWebhook?url='+app_url
+    requests.get(url)
 
 
 #TEXT
