@@ -33,29 +33,31 @@ def getWeather():
 #WIKISEARCH
 def WikiSearch(search_request):
     link = 'https://ru.wikipedia.org/w/api.php/api.php?format=json&action=query&prop=extracts&titles={}' \
-           '&redirects=true&format=json&exintro=false&exchars=1000&exlimit=1&exsectionformat=plain'.format(search_request)
+           '&redirects=true&format=json&exintro=false&exchars=1000&exlimit=1&exsectionformat=plain'.format(
+        search_request)
     a = requests.get(link)
     res = a.json()
 
-
     res = res['query']['pages']
-
     res = res[next(iter(res.keys()))]
     res = res['extract']
 
-    res = res [3:]
+    res = res[3:]
     res = res.replace('<br>', '\n')
-
     res = res.replace('<i>', '')
     res = res.replace('</i>', '')
-
     res = res.replace('<p>', '\n')
     res = res.replace('</p>', '')
 
     span_first = res.find('<span')
-    span_second = res.rfind('/span>')+6
+    span_second = res.rfind('/span>')
+
+    if span_second != -1:
+        span_second += 6
 
     res = res[:span_first] + res[span_second:]
+    res = res.replace('<span>', '')
+    res = res.replace('</span>', '')
     return res
 
 
