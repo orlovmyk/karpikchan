@@ -49,6 +49,10 @@ def callback_query_handler(query):
 
 
 def text_message(chat_id, text):
+    for ch in [',', '{', '}', '(', ')', '#', '-', '.', '!']:
+            if ch in text:
+                text = text.replace(ch, '')
+
     parts = text.lower().split()
     keys = constants.trigers.keys()
     for i in parts:
