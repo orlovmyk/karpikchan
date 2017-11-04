@@ -58,8 +58,12 @@ text_answers = {
     "/github": "Голые исходники <code>только с 18</code>\nhttps://github.com/orlovw/karpikchan",
     "/sex": "И немного <i>секса</i>",
     "/ivan": "<code>T S Y A R</code>",
-    "8осемь":"8осемь раз по 8осемь сосен",
-    "/vitya":"https://www.google.com.ua/search?q=%D1%87%D0%B0%D0%B9%D0%BD%D0%B8%D0%BA",
+    "8осемь": "8осемь раз по 8осемь сосен",
+    "/svetlana": "Света - солнышко чата",
+    "/detcom": "<b>ДЕТКОМ, ПОШЕЛ НАХУЙ, ХОХОЛ</b>",
+    "/ban": "<b>ЗОБАНьЮ!!!!</b>",
+    "/andre": "У вас ошибка в слове /andruxa",
+    "/vitya": "Чайник?",
     "/orlow": "t.me/orlow"
 }
 
