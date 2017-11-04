@@ -15,7 +15,11 @@ def message_handler(query):
 
     if 'text' in query.keys():
         text = query["text"]
-        text_message(chat_id, text)
+
+        if text[0] == '/':
+            command_message(chat_id, text)
+        else:
+            text_message(chat_id, text)
 
     if 'location' in query.keys():
         location = query['location']
@@ -45,6 +49,11 @@ def callback_query_handler(query):
 
 
 def text_message(chat_id, text):
+    if text in constants.trigers.keys():
+        e.sendMessage(chat_id, constants.trigers[text])
+
+
+def command_message(chat_id, text):
     """
     {'last_name': '🍀', 'chat_id': 239062390, 'first_name': 'orlow', 'username': 'orlow', 'text': '3'}
 
