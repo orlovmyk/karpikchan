@@ -49,8 +49,13 @@ def callback_query_handler(query):
 
 
 def text_message(chat_id, text):
-    if text in constants.trigers.keys():
-        e.sendMessage(chat_id, constants.trigers[text])
+    parts = text.lower().split()
+    keys = constants.trigers.keys()
+    for i in parts:
+        if i in keys:
+            e.sendMessage(chat_id, constants.trigers[i])
+
+
 
 
 def command_message(chat_id, text):
