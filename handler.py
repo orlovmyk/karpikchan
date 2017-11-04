@@ -49,7 +49,7 @@ def callback_query_handler(query):
 
 
 def text_message(chat_id, text):
-    for ch in [',', '{', '}', '(', ')', '#', '-', '.', '!']:
+    for ch in [',', '?', '(', ')', '#', '-', '.', '!']:
             if ch in text:
                 text = text.replace(ch, '')
 
