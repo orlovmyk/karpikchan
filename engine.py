@@ -200,7 +200,13 @@ def sendSticker(chat_id, sticker_id):
     url = URL + 'sendSticker?chat_id={}&sticker={}'.format(chat_id,sticker_id)
     requests.get(url)
 
+
 # CHAT
 def leaveChat(chat_id):
     res = URL + 'leaveChat?chat_id={}'.format(chat_id)
+    requests.get(res)
+
+
+def sendLocation(chat_id, lat, long):
+    res = URL + 'sendLocation?chat_id={}&latitude={}&longitude={}'.format(chat_id, lat, long)
     requests.get(res)

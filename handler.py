@@ -9,33 +9,8 @@ schedule_markup = constants.schedule_markup
 people_list = constants.people_list
 people_list_markup = constants.people_list_markup
 
-"""
-        text = res['text']
-        if not text:
-            text = '<code>пост без сообщения</code>'
-
-        attachments = res["attachments"]
-        markup = []
-        if attachments:
-            for i in attachments:
-                current_item = next(iter(i.items()))
-                markup.append([{"text": current_item[0]}, {"callback_data": 'url'+current_item[1]}])
-
-        e.sendMessage(chat_id, text,reply_markup= {"inline_keyboard": markup ,"resize_keyboard": True})
-"""
 
 def message_handler(query):
-    """
-    {'last_name': '🍀', 'chat_id': 239062390, 'first_name': 'orlow', 'username': 'orlow', 'text': '3'}
-    
-    markup_usage    
-    markup = {"inline_keyboard":
-                      [[{"text":"Горизонтально", "callback_data":"horizontally"},
-                        {"text":"Вертикально", "callback_data":"vertically"}]]
-            ,"resize_keyboard":True}
-    
-    """
-
     chat_id = query["chat_id"]
 
     if 'text' in query.keys():
@@ -45,8 +20,6 @@ def message_handler(query):
     if 'location' in query.keys():
         location = query['location']
         location_message(chat_id, location)
-
-
 
 
 def callback_query_handler(query):
@@ -72,6 +45,16 @@ def callback_query_handler(query):
 
 
 def text_message(chat_id, text):
+    """
+    {'last_name': '🍀', 'chat_id': 239062390, 'first_name': 'orlow', 'username': 'orlow', 'text': '3'}
+
+    markup_usage    
+    markup = {"inline_keyboard":
+                      [[{"text":"Горизонтально", "callback_data":"horizontally"},
+                        {"text":"Вертикально", "callback_data":"vertically"}]]
+            ,"resize_keyboard":True}
+
+    """
     if '@' in text:
         res = text.find('@')
         text = text[:res]
@@ -87,13 +70,18 @@ def text_message(chat_id, text):
     elif text == "/w":
         e.sendMessage(chat_id, e.getWeather())
 
-    elif text[1] == "g":
+    elif text[:3] == "/g ":
         text = text[3:]
         e.sendMessage(chat_id, e.DuckDuckGo(text))
 
-    elif text[1] == "i":
+    elif text[:3] == "/i ":
         text = text[3:]
         e.sendMessage(chat_id, e.WikiSearch(text))
+
+    elif text == '/sharaga':
+        lat = constants.latitude
+        long = constants.longitude
+        e.sendLocation(chat_id, lat, long)
 
     elif text == "/andruxa":
         e.sendMessage(chat_id, 'ЕБАТЬ АНДРЮХА!')
