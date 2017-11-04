@@ -75,7 +75,8 @@ def command_message(chat_id, text):
     """
     if '@' in text:
         res = text.find('@')
-        if text[:res] == '@karpikchanbot':
+
+        if text[res:] == '@karpikchanbot':
             text = text[:res]
         else: return
 
