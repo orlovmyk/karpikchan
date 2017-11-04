@@ -51,7 +51,7 @@ def callback_query_handler(query):
 def text_message(chat_id, text):
     for ch in [',', '?', '(', ')', '#', '-', '.', '!']:
             if ch in text:
-                text = text.replace(ch, '')
+                text = text.replace(ch, ' ')
 
     parts = text.lower().split()
     keys = constants.trigers.keys()
@@ -75,7 +75,9 @@ def command_message(chat_id, text):
     """
     if '@' in text:
         res = text.find('@')
-        text = text[:res]
+        if text[:res] == '@karpikchanbot':
+            text = text[:res]
+        else: return
 
     if text == "/s":
         weekday = datetime.datetime.now().weekday()
