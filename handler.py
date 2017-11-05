@@ -58,6 +58,7 @@ def text_message(chat_id, text):
     for i in parts:
         if i in keys:
             e.sendMessage(chat_id, constants.trigers[i])
+            return
 
 
 
