@@ -9,7 +9,6 @@ schedule_markup = constants.schedule_markup
 people_list = constants.people_list
 people_list_markup = constants.people_list_markup
 
-DAY_WORD = -1
 
 def message_handler(query):
     chat_id = query["chat_id"]
@@ -112,13 +111,18 @@ def command_message(chat_id, text):
         e.sendMessage(chat_id, '😎😎😎')
 
     elif text == "/word":
-        e.sendMessage(chat_id, 'Выбираем слово дня')
-        e.sendMessage(chat_id, '<i>тыц трыц телевизор и два фиксика внутри</i>')
-        #182 - kol-vo lines
-        f = open('vocabulary.txt')
-        lines = f.readlines()
-        word = lines[random.randint(0,182)]
-        e.sendMessage(chat_id, '<b>'+word+'</b>')
+        weekday = datetime.datetime.now().weekday()
+        if constants.WORD_DAY != weekday:
+            e.sendMessage(chat_id, 'Выбираем слово дня')
+            e.sendMessage(chat_id, '<i>тыц трыц телевизор и два фиксика внутри</i>')
+            #182 - kol-vo lines
+            f = open('vocabulary.txt')
+            lines = f.readlines()
+            word = lines[random.randint(0,182)]
+            e.sendMessage(chat_id, '<b>'+word+'</b>')
+        else:
+            e.sendMessage(chat_id, 'Слово дня.\nЗначит раз в день.\nНе больше!')
+            constants.WORD_DAY = weekday 
 
 
     elif text == "/cookie":
