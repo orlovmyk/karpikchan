@@ -114,11 +114,11 @@ def command_message(chat_id, text):
     elif text == "/word":
         e.sendMessage(chat_id, 'Выбираем слово дня')
         e.sendMessage(chat_id, '<i>тыц трыц телевизор и два фиксика внутри</i>')
-
         #182 - kol-vo lines
         f = open('vocabulary.txt')
         lines = f.readlines()
-        e.sendMessage(chat_id, lines[random.random(0,182)])
+        word = lines[random.randint(0,182)]
+        e.sendMessage(chat_id, '<b>'+word+'</b>')
 
 
     elif text == "/cookie":

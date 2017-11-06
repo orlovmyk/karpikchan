@@ -156,3 +156,4 @@ text_answers = {
 
 latitude = 49.9992089
 longitude = 36.2429473
+
