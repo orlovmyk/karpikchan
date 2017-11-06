@@ -115,14 +115,15 @@ def command_message(chat_id, text):
         if constants.WORD_DAY != weekday:
             e.sendMessage(chat_id, 'Выбираем слово дня')
             e.sendMessage(chat_id, '<i>тыц трыц телевизор и два фиксика внутри</i>')
-            #182 - kol-vo lines
+            # 182 - kol-vo lines
             f = open('vocabulary.txt')
             lines = f.readlines()
-            word = lines[random.randint(0,182)]
+            word = lines[random.randint(0, 182)]
             e.sendMessage(chat_id, '<b>'+word+'</b>')
+            constants.WORD_DAY = weekday
         else:
             e.sendMessage(chat_id, 'Слово дня.\nЗначит раз в день.\nНе больше!')
-            constants.WORD_DAY = weekday 
+
 
 
     elif text == "/cookie":
