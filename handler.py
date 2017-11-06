@@ -115,7 +115,7 @@ def command_message(chat_id, text):
         e.sendMessage(chat_id, 'Выбираем слово дня')
         e.sendMessage(chat_id, '<i>тыц трыц телевизор и два фиксика внутри</i>')
         key = choice(list(constants.day_word_list.keys()))
-        e.sendMessage(chat_id, 'СЛОВО ДНЯ:\n<b>'+key+'</b>\n\nЕго значение:'+constants.day_word_list[key])
+        e.sendMessage(chat_id, 'СЛОВО ДНЯ:\n<b>'+key+'</b>\n\nЕго значение: '+constants.day_word_list[key])
 
     elif text == "/cookie":
         markup = {"inline_keyboard":
