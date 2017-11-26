@@ -238,5 +238,5 @@ class Players():
     def get_top(self):
         res = ''
         for i in self.players:
-           res += self.players[1]+': '+str(self.players[0])+'\n'
+           res += self.players[i][1]+': '+str(self.players[i][0])+'\n'
         return res
