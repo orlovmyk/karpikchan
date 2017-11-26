@@ -34,9 +34,12 @@ def callback_query_handler(query):
     data = query['data']
     message_id = query['message_id']
     callback_query_id = query["callback_query_id"]
+    user_id = query['user_id']
+    first_name = query['first_name']
 
     if data == '999':
         e.answerCallbackQuery(callback_query_id,'Вы поулчили по ебалу')
+        e.sendMessage(chat_id, first_name + ' получил(а) по ебалу')
 
     elif data[:6] == 'people':
         e.editMessageText(chat_id, message_id, people_list[data], reply_markup=people_list_markup)

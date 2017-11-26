@@ -43,10 +43,14 @@ def main():
             data = answer["callback_query"]["data"]
             message_id = answer["callback_query"]["message"]["message_id"]
             callback_query_id = answer["callback_query"]["id"]
+            user_id = answer['callback_query']['from']['id']
+            first_name = answer['callback_query']['from']['first_name']
             answer = {"chat_id": chat_id,
                       "data": data,
                       "message_id": message_id,
-                      "callback_query_id": callback_query_id
+                      "callback_query_id": callback_query_id,
+                      "user_id": user_id,
+                      "first_name": first_name
                       }
             callback_query_handler(answer)
 
