@@ -105,6 +105,9 @@ def command_message(chat_id, text):
         long = constants.longitude
         e.sendLocation(chat_id, lat, long)
 
+    elif text == '/tigran':
+        e.sendMessage(chat_id, random.choice(constants.tigran))
+
     elif text == "/andruxa":
         e.sendMessage(chat_id, 'ЕБАТЬ АНДРЮХА!')
         e.sendMessage(chat_id, 'МУЖИК!')
