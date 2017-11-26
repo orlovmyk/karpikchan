@@ -2,6 +2,7 @@ import os
 import requests
 from json import dumps
 import time
+import json
 
 #ENVIRON'S
 APP_URL = os.environ.get('APP_URL')
@@ -210,3 +211,32 @@ def leaveChat(chat_id):
 def sendLocation(chat_id, lat, long):
     res = URL + 'sendLocation?chat_id={}&latitude={}&longitude={}'.format(chat_id, lat, long)
     requests.get(res)
+
+
+# CLASSES
+class Players():
+    def __init__(self):
+        self.players = {}
+
+    def load(self):
+        with open('players.json', 'r') as f:
+            try:
+                self.players = json.loads(f.read())
+            except json.JSONDecodeError:
+                self.players = {}
+
+    def inc(self, user_id, first_name):
+        if user_id in self.players.keys():
+            self.players[user_id][0] += 1
+
+        else:
+            res = {user_id: [1, first_name]}
+            self.players.update(res)
+            with open('sketches.json', 'w') as f:
+                f.write(json.dumps(self.players))
+
+    def get_top(self):
+        res = ''
+        for i in self.players:
+           res += self.players[1]+': '+str(self.players[0])+'\n'
+        return res

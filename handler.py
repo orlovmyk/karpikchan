@@ -9,6 +9,8 @@ schedule_markup = constants.schedule_markup
 people_list = constants.people_list
 people_list_markup = constants.people_list_markup
 
+PLAYERS = e.Players()
+PLAYERS.load()
 
 def message_handler(query):
     chat_id = query["chat_id"]
@@ -27,7 +29,6 @@ def message_handler(query):
 
 
 def callback_query_handler(query):
-
     print(query)
 
     chat_id = query['chat_id']
@@ -39,7 +40,9 @@ def callback_query_handler(query):
 
     if data == '999':
         e.answerCallbackQuery(callback_query_id,'Вы поулчили по ебалу')
-        e.sendMessage(chat_id, first_name + ' получил(а) по ебалу')
+        #e.sendMessage(chat_id, first_name + ' получил(а) по ебалу')
+        PLAYERS.inc(user_id, first_name)
+
 
     elif data[:6] == 'people':
         e.editMessageText(chat_id, message_id, people_list[data], reply_markup=people_list_markup)
@@ -130,8 +133,6 @@ def command_message(chat_id, text):
         else:
             e.sendMessage(chat_id, 'Слово дня.\nЗначит раз в день.\nНе больше!')
 
-
-
     elif text == "/cookie":
         markup = {"inline_keyboard":
                       [[{"text": "Получить печенье 🍪", "callback_data": "999"}]]
@@ -146,6 +147,9 @@ def command_message(chat_id, text):
         res = e.getStickerSet(stickers_rand)
         sticker_list = [i["file_id"] for i in res]
         e.sendSticker(chat_id, random.choice(sticker_list))
+
+    elif text == "/cookie_top":
+        e.sendMessage(chat_id, PLAYERS.get_top())
 
     elif text == "/kurashow":
         res = e.getStickerSet('Kurashow')
