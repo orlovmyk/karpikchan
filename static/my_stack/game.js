@@ -39,18 +39,18 @@ playGame.prototype = {
 		game.scale.pageAlignHorizontally = true;
 		game.scale.pageAlignVertically = true;
         game.stage.disableVisibilityChange = true;
-        game.load.image("ground", "assets/sprites/ground.png");
-        game.load.image("sky", "assets/sprites/sky.png");
-        game.load.image("crate", "assets/sprites/crate.png");
-        game.load.image("title", "assets/sprites/title.png");
-        game.load.image("tap", "assets/sprites/tap.png");
-        game.load.audio("hit01", ["assets/sounds/hit01.mp3", "assets/sounds/hit01.ogg"]);
-        game.load.audio("hit02", ["assets/sounds/hit02.mp3", "assets/sounds/hit02.ogg"]);
-        game.load.audio("hit03", ["assets/sounds/hit03.mp3", "assets/sounds/hit03.ogg"]);
-        game.load.audio("remove", ["assets/sounds/remove.mp3", "assets/sounds/remove.ogg"]);
-        game.load.audio("gameover", ["assets/sounds/gameover.mp3", "assets/sounds/gameover.ogg"]);
-        game.load.bitmapFont("font", "assets/fonts/font.png", "assets/fonts/font.fnt");
-        game.load.bitmapFont("smallfont", "assets/fonts/smallfont.png", "assets/fonts/smallfont.fnt");
+        game.load.image("ground", "static/my_stack/assets/sprites/ground.png");
+        game.load.image("sky", "static/my_stack/assets/sprites/sky.png");
+        game.load.image("crate", "static/my_stack/assets/sprites/crate.png");
+        game.load.image("title", "static/my_stack/assets/sprites/title.png");
+        game.load.image("tap", "static/my_stack/assets/sprites/tap.png");
+        game.load.audio("hit01", ["static/my_stack/assets/sounds/hit01.mp3", "static/my_stack/assets/sounds/hit01.ogg"]);
+        game.load.audio("hit02", ["static/my_stack/assets/sounds/hit02.mp3", "static/my_stack/assets/sounds/hit02.ogg"]);
+        game.load.audio("hit03", ["static/my_stack/assets/sounds/hit03.mp3", "static/my_stack/assets/sounds/hit03.ogg"]);
+        game.load.audio("remove", ["static/my_stack/assets/sounds/remove.mp3", "static/my_stack/assets/sounds/remove.ogg"]);
+        game.load.audio("gameover", ["static/my_stack/assets/sounds/gameover.mp3", "static/my_stack/assets/sounds/gameover.ogg"]);
+        game.load.bitmapFont("font", "static/my_stack/assets/fonts/font.png", "static/my_stack/assets/fonts/font.fnt");
+        game.load.bitmapFont("smallfont", "static/my_stack/assets/fonts/smallfont.png", "static/my_stack/assets/fonts/smallfont.fnt");
     },
   	create: function(){
         if(!Phaser.Device.desktop){
