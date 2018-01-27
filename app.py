@@ -1,4 +1,4 @@
-from flask import Flask, Response, request
+from flask import Flask, Response, request, render_template
 import os
 from handler import message_handler, callback_query_handler
 
@@ -66,7 +66,7 @@ def test():
 
 @app.route('/my_stack')
 def my_stack():
-    return app.send_static_file('my_stack/index.html')
+    return render_template('my_stack.html')
 
 
 if __name__ == '__main__':
