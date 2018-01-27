@@ -63,15 +63,11 @@ def main():
 def test():
     return 'working'
 
+
 @app.route('/my_stack')
 def my_stack():
     content = open('games/my_stack/index.html', 'r').read()
-    return Response(content, mimetype="text/html")
-
-@app.route('/game.js')
-def my_stack_js():
-    content = open('games/my_stack/game.js', 'r').read()
-    return Response(content, mimetype="text/javascript")
+    return Response(content)
 
 
 if __name__ == '__main__':
