@@ -64,9 +64,10 @@ def test():
     return 'working'
 
 @app.route('/my_stack')
-def test():
+def my_stack():
     content = open('games/my_stack/index.html', 'r').read()
     return Response(content, mimetype="text/html")
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT'))
