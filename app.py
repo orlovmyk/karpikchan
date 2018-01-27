@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, Response, request
 import os
 from handler import message_handler, callback_query_handler
 
@@ -62,6 +62,11 @@ def main():
 @app.route('/test')
 def test():
     return 'working'
+
+@app.route('/my_stack')
+def test():
+    content = open('games/my_stack/index.html', 'r').read()
+    return Response(content, mimetype="text/html")
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT'))

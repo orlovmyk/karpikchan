@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<title>Stack the Crates</title>
+        <meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, minimum-scale = 1.0, user-scalable = 0, minimal-ui" />
+        <link rel = "shortcut icon" sizes = "256x256" href = "icon-256.png" />
+        <style type = "text/css">
+            * {
+                padding: 0;
+                margin: 0;
+            }
+            body{
+                background: #0259a0;
+            }
+            canvas {
+                touch-action-delay: none;
+                touch-action: none;
+                -ms-touch-action: none;
+            }
+            #wrongorientation{
+                background: url("images/wrongorientation.png") no-repeat center center fixed;
+                background-size: contain;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0px;
+                left: 0px;
+                z-index: 1000;
+                display: none;
+            }
+        </style>
+        <script src = "phaser.min.js"></script>
+        <script src="box2d-plugin-full.js"></script>
+        <script src = "game.js"></script>
+    </head>
+    <body>
+        <div id = "wrongorientation"></div>
+    </body>
+</html>
