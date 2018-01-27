@@ -66,8 +66,7 @@ def test():
 
 @app.route('/my_stack')
 def my_stack():
-    content = open('games/my_stack/index.html', 'r').read()
-    return Response(content)
+    return app.send_static_file('my_stack/index.html')
 
 
 if __name__ == '__main__':
