@@ -161,6 +161,9 @@ def command_message(chat_id, text):
                       reply_markup={"keyboard": [[{"text": "Мое местоположение", "request_location": True}]],
                                     "resize_keyboard": True, "one_time_keyboard": True})
 
+    elif text == "/clitor":
+        e.sendMessage(chat_id, "У клиторов есть глаза")
+
     elif text == "/linux":
         e.sendMessage(chat_id, """
 {0}: Полюбила я пингвина,
