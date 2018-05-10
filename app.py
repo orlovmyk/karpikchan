@@ -69,6 +69,10 @@ def my_stack():
     return render_template('my_stack.html')
 
 
+@app.route('/arcanoid_bogdan')
+def arcanoid_bogdan():
+    return render_template('arcanoid_bogdan.html')
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT'))
     app.run(host='0.0.0.0', port=port)
