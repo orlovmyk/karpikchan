@@ -163,6 +163,9 @@ def command_message(chat_id, text):
 
     elif text == "/clitor":
         e.sendMessage(chat_id, "У клиторов есть глаза")
+        
+    elif text == "/ebgen":
+        e.sendMessage(chat_id, 'Тут ничего сложного! Тупо смотришь на другие функции')
 
     elif text == "/linux":
         e.sendMessage(chat_id, """
