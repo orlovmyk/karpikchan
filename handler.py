@@ -94,7 +94,7 @@ def command_message(chat_id, text):
 
     elif text == "/l":
         e.sendMessage(chat_id, people_list['people1'], reply_markup=people_list_markup)
-
+        
     elif text == "/w":
         e.sendMessage(chat_id, e.getWeather())
 
@@ -118,6 +118,9 @@ def command_message(chat_id, text):
         e.sendMessage(chat_id, 'ЕБАТЬ АНДРЮХА!')
         e.sendMessage(chat_id, 'МУЖИК!')
         e.sendMessage(chat_id, '😎😎😎')
+        
+    elif text == "/ebgen":
+        e.sendMessage(chat_id, 'Питон... Как душить питона??? Поиск винт эрнэтах...')
 
     elif text == "/word":
         weekday = datetime.datetime.now().weekday()
