@@ -128,6 +128,7 @@ text_answers = {
 "/ban": "<b>ЗОБАНьЮ!!!!</b>",
 "/andre": "У вас ошибка в слове /andruxa",
 "/vitya": "Чайник?",
+"/op":"https://docs.google.com/spreadsheets/d/11Cj9dFX9znGiqXwTdZlCisvJvVRPKupazF6X45VnaIU/edit?usp=sharing",
 "/ksenia": "Ксения это вам не Оксана\n<b>Понял, да?</b>",
 "/face": "<b>ЭЩКЕЕЕЕРЕЕЕЕ!!11!!</b>",
 "/marvel": "Самые норм сиги имхо, все остальное так себе\nВо славу Межера конечно",
